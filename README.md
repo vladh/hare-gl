@@ -32,7 +32,7 @@ with another library, such as hare-sdl2. To do this, you simply need to call
 `gl::load()` before doing any OpenGL-related stuff.
 
 ```
-use v4.3-core/gl;
+use hare-gl::v4.3-core::gl;
 
 export fn main() void = {
     # ...
@@ -53,7 +53,7 @@ Please use the built-in loader. This warning will be removed once the bug is
 fixed.
 
 ```
-use v4.3-core/gl;
+use hare-gl::v4.3-core::gl;
 
 export fn main() void = {
     # ...
