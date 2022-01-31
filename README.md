@@ -26,10 +26,11 @@ There are currently a few limitations described below.
 To use the bindings, you're free to clone or copy this repository, or one
 of its sub-folders, into your project and adjust the `use` path accordingly.
 
-There are two options for loading the OpenGL bindings. Firstly, you can use
-the built-in loader that comes with hare-gl. You can use this loader together
-with another library, such as hare-sdl2. To do this, you simply need to call
-`gl::load()` before doing any OpenGL-related stuff.
+There are two options for loading the OpenGL bindings. Firstly, you can use the
+built-in loader that comes with hare-gl. You can use this loader together with
+another library, such as [hare-sdl2](https://git.sr.ht/~sircmpwn/hare-sdl2). To
+do this, you simply need to call `gl::load()` before doing any OpenGL-related
+stuff.
 
 ```
 use hare-gl::v4.3-core::gl;
