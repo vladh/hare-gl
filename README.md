@@ -25,8 +25,10 @@ There are currently a few limitations described below.
 
 ## Usage
 
-To use the bindings, you're free to clone or copy this repository, or one
-of its sub-folders, into your project and adjust the `use` path accordingly.
+To use the bindings, copy the appropriate subdirectory from this repository
+into your project and adjust the `use` path accordingly. Alternatively,
+follow the instructions below about how to generate your own bindings, for
+example if you're using specific OpenGL extensions.
 
 There are two options for loading the OpenGL bindings. Firstly, you can use the
 built-in loader that comes with hare-gl. You can use this loader together with
@@ -35,7 +37,7 @@ do this, you simply need to call `gl::load()` before doing any OpenGL-related
 stuff.
 
 ```
-use hare-gl::v4.3-core::gl;
+use gl;
 
 export fn main() void = {
     # ...
@@ -56,7 +58,7 @@ Please use the built-in loader. This warning will be removed once the bug is
 fixed.
 
 ```
-use hare-gl::v4.3-core::gl;
+use gl;
 
 export fn main() void = {
     # ...
