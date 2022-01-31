@@ -76,3 +76,6 @@ It might look something like this.
 ```
 python -m glad --out-path=../my-project --api gl:core=4.3 --extensions GL_ARB_texture_cube_map_array hare
 ```
+
+Then, simply include the generated bindings by adjusting your `use` path
+appropriately.
