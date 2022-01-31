@@ -1,20 +1,77 @@
 # hare-gl
 
-These are OpenGL bindings for [Hare].
+These are OpenGL bindings for [Hare](https://harelang.org).
+They are generated with the
+[glad2-hare branch of ~vladh/glad](https://git.sr.ht/~vladh/glad), which is
+a fork of the original [glad by Dav1dde](https://github.com/Dav1dde/glad).
+When Hare is released, a request to merge our version of glad upstream will
+be submitted.
 
-[Hare]: https://harelang.org
+This repository contains a pregenerated set of useful OpenGL bindings, as well
+as documentation regarding the state of OpenGL bindings in general in Hare,
+including instructions on using glad2 with Hare.
 
 ## Status
 
-The following bindings are currently complete:
+Hare bindings can be generated using glad2 for any combination of versions and
+extensions of OpenGL.
 
-* OpenGL 1.0
-* OpenGL 1.1
-* OpenGL 1.2
-* OpenGL 1.3
+EGL, GLX, khrplatform and Vulkan are currently not supported. Support can be
+added quite trivially to glad2 by adding a `types/*.ha` file.
 
-Binding for extensions and functions through OpenGL 4, will be added
-incrementally.
+There are currently a few limitations described below.
 
-The code has not been fully tested, so please send a patch if you encounter any
-problems (e.g. pointer arguments missing `nullable`).
+## Usage
+
+To use the bindings, you're free to clone or copy this repository, or one
+of its sub-folders, into your project and adjust the `use` path accordingly.
+
+There are two options for loading the OpenGL bindings. Firstly, you can use
+the built-in loader that comes with hare-gl. You can use this loader together
+with another library, such as hare-sdl2. To do this, you simply need to call
+`gl::load()` before doing any OpenGL-related stuff.
+
+```
+use v4.3-core/gl;
+
+export fn main() void = {
+    # ...
+    gl::load();
+    # Perhaps you're using hare-sdl2?
+    # sdl2::init(sdl2::init_flags::VIDEO)!;
+    # ...
+    gl::glBindVertexBuffer(...);
+};
+```
+
+Alternatively, a library you're using may already provide a `GetProcAddress()`
+function, which you're free to use by passing it to `gl::load_with_fn()`. Here's
+an example.
+
+**WARNING:** There is currently a bug which prevents this method from working.
+Please use the built-in loader. This warning will be removed once the bug is
+fixed.
+
+```
+use v4.3-core/gl;
+
+export fn main() void = {
+    # ...
+    gl::load_with_fn(&sdl2::gl_get_proc_address: *gl::fp_get_proc_address);
+    # Perhaps you're using hare-sdl2?
+    sdl2::init(sdl2::init_flags::VIDEO)!;
+    # ...
+    gl::glBindVertexBuffer(...);
+};
+```
+
+## Generating your own bindings
+
+If you'd like to generate your own bindings, for example if you're using
+specific OpenGL extensions, you're free to do this by cloning the
+[glad-sdl2 repository](https://git.sr.ht/~vladh/glad) and running glad yourself.
+It might look something like this.
+
+```
+python -m glad --out-path=../my-project --api gl:core=4.3 --extensions GL_ARB_texture_cube_map_array hare
+```
