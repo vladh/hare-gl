@@ -30,6 +30,11 @@ into your project and adjust the `use` path accordingly. Alternatively,
 follow the instructions below about how to generate your own bindings, for
 example if you're using specific OpenGL extensions.
 
+The functions and constants are named the same as their original OpenGL
+counterparts, so you can use the `glFunctions()` and `GL_COSTANTS` you're used
+to by prefixing them with `gl::`, i.e. `gl::glBindVertexBuffer()` and
+`GL_FALSE`.
+
 There are two options for loading the OpenGL bindings. Firstly, you can use the
 built-in loader that comes with hare-gl. You can use this loader together with
 another library, such as [hare-sdl2](https://git.sr.ht/~sircmpwn/hare-sdl2). To
