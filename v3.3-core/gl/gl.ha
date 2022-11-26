@@ -12,42 +12,42 @@ fn get_proc_address(proc_name: str) *void = {
 export type gl_enum = uint;
 export type gl_bitfield = uint;
 
-export type GLDEBUGPROC = fn(
+export type GLDEBUGPROC = nullable *fn(
 	source: gl_enum,
 	type_: gl_enum,
 	id: uint,
 	severity: gl_enum,
 	length: i32,
-	message: *const i8,
-	userParam: *void
+	message: nullable *const char,
+	userParam: nullable *void
 ) void;
-export type GLDEBUGPROCARB = fn(
+export type GLDEBUGPROCARB = nullable *fn(
 	source: gl_enum,
 	type_: gl_enum,
 	id: uint,
 	severity: gl_enum,
 	length: i32,
-	message: *const i8,
-	userParam: *void
+	message: nullable *const char,
+	userParam: nullable *void
 ) void;
-export type GLDEBUGPROCKHR = fn(
+export type GLDEBUGPROCKHR = nullable *fn(
 	source: gl_enum,
 	type_: gl_enum,
 	id: uint,
 	severity: gl_enum,
 	length: i32,
-	message: *const i8,
-	userParam: *void
+	message: nullable *const char,
+	userParam: nullable *void
 ) void;
-export type GLDEBUGPROCAMD = fn(
+export type GLDEBUGPROCAMD = nullable *fn(
 	id: uint,
 	category: gl_enum,
 	severity: gl_enum,
 	length: i32,
-	message: *const i8,
-	userParam: *void
+	message: nullable *const char,
+	userParam: nullable *void
 ) void;
-export type GLVULKANPROCNV = fn() void;
+export type GLVULKANPROCNV = nullable *fn() void;
 
 // Constants
 export def GL_1PASS_EXT: uint = 0x80A1;
@@ -5185,7 +5185,7 @@ export type fp_glGetConvolutionParameterivEXT = fn(target: gl_enum, pname: gl_en
 export type fp_glGetConvolutionParameterxvOES = fn(target: gl_enum, pname: gl_enum, params: nullable *i32) void;
 export type fp_glGetCoverageModulationTableNV = fn(bufSize: i32, v: nullable *f32) void;
 export type fp_glGetDebugMessageLog = fn(count: uint, bufSize: i32, sources: nullable *gl_enum, types: nullable *gl_enum, ids: nullable *uint, severities: nullable *gl_enum, lengths: nullable *i32, messageLog: nullable *i8) uint;
-export type fp_glGetDebugMessageLogAMD = fn(count: uint, bufSize: i32, categories: nullable *gl_enum, severities: nullable *uint, ids: nullable *uint, lengths: nullable *i32, message: nullable *i8) uint;
+export type fp_glGetDebugMessageLogAMD = fn(count: uint, bufSize: i32, categories: nullable *gl_enum, severities: nullable *gl_enum, ids: nullable *uint, lengths: nullable *i32, message: nullable *i8) uint;
 export type fp_glGetDebugMessageLogARB = fn(count: uint, bufSize: i32, sources: nullable *gl_enum, types: nullable *gl_enum, ids: nullable *uint, severities: nullable *gl_enum, lengths: nullable *i32, messageLog: nullable *i8) uint;
 export type fp_glGetDetailTexFuncSGIS = fn(target: gl_enum, points: nullable *f32) void;
 export type fp_glGetDoubleIndexedvEXT = fn(target: gl_enum, index: uint, data: nullable *f64) void;
