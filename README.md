@@ -15,8 +15,7 @@ including instructions on using glad2 with Hare.
 
 Hare bindings can be generated using glad2 for any combination of versions and
 extensions of OpenGL. If you spot any problems with the pregenerated bindings,
-please send an email, or preferably a patch, to
-[vlad@vladh.net](mailto:vlad@vladh.net).
+please send an email, or preferably a patch, as described below.
 
 EGL, GLX, khrplatform and Vulkan are currently not supported. Support can be
 added quite trivially to glad2 by adding a `types/*.ha` file.
