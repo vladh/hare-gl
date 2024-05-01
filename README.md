@@ -88,3 +88,15 @@ python -m glad --out-path=../my-project --api gl:core=4.3 --extensions GL_ARB_te
 
 Then, simply include the generated bindings by adjusting your `use` path
 appropriately.
+
+## Contributing
+
+Send patches to `~vladh/general@lists.sr.ht` using subject prefix `[PATCH hare-gl]`. For example:
+
+```
+git config sendemail.to '~vladh/general@lists.sr.ht'
+git config format.subjectPrefix 'PATCH hare-gl'
+git send-email HEAD^
+```
+
+For more information, see [git-send-email.io](https://git-send-email.io/).
